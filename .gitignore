@@ -1,1 +1,5 @@
+# Node artifacts
 node_modules
+
+# mac OS
+.DS_Store
