@@ -3,9 +3,10 @@ const express = require('express');
 const mongodb = require('mongodb');
 
 // Import routes
-let guests = require('./routes/guests');
-let bookings = require('./routes/bookings');
-
+const guests   = require('./routes/guests');
+const bookings = require('./routes/bookings');
+const rooms    = require('./routes/rooms');
+ 
 // initiaate app and load middleware
 const app = express();
 app.use(express.static('public'));
@@ -15,7 +16,7 @@ app.listen(3000);
 
 
 // init dbase
-let MongoClient = mongodb.MongoClient;
+const MongoClient = mongodb.MongoClient;
 MongoClient.connect('mongodb://127.0.0.1:27017/', function(err, client) {
     if(err!==undefined) {
         console.log(err);
@@ -27,5 +28,6 @@ MongoClient.connect('mongodb://127.0.0.1:27017/', function(err, client) {
 // add routes to the app
 app.use('/guests',guests);
 app.use('/bookings',bookings);
+app.use('/rooms',rooms);
 
 
